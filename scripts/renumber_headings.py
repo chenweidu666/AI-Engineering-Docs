@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """
+[已弃用] 新规范请使用 normalize_headings.py（无数字编号 + 居中 H1）。
+
 将 docs 下 Markdown 标题改为文档内层级编号（与文件名篇号无关）：
   篇名：**1. 标题**（加粗正文，不用 ATX 一级标题）
   ## 1.1. 标题
