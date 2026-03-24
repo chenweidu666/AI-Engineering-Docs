@@ -41,7 +41,7 @@
 
 * **六、工程化**
   * [6.1 FastAPI 服务化](docs/06_工程化/6.1_FastAPI服务化.md)
-  * [6.2 Docker 与 CI/CD](docs/06_工程化/6.2_Docker_CICD.md)
+  * [6.2 Docker 容器化](docs/06_工程化/6.2_Docker.md)
 
 ---
 
