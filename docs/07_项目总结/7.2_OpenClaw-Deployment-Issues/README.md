@@ -1,23 +1,20 @@
 <!-- 文档同步自 https://github.com/chenweidu666/OpenClaw-Deployment-Issues 分支 main — 请勿手工与上游长期双轨编辑 -->
 
 
-# 1. OpenClaw 部署指南与踩坑记录：NAS + 云端 API 私人 AI 助手完整实战
-
+<div style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;"><strong>OpenClaw 部署指南与踩坑记录：NAS + 云端 API 私人 AI 助手完整实战</strong></div>
 
 <p align="center">
   <img src="images/openclaw_logo.png" alt="OpenClaw Logo" width="200" />
 </p>
 
-> **OpenClaw** 是 2026 年前后社区讨论度很高的开源 AI 助手方案之一——它不只是一个聊天机器人框架，而是一个完整的 **AI Agent 操作系统**：支持飞书 / Web 多渠道接入，内置工具调用（function calling）、技能系统（Skills）、记忆管理、多 Agent 协作，还能接入任意 OpenAI 兼容的大模型。
->
-> 本仓库是一份**从零到可用的完整实战文档**：用一台绿联 DH4300+ NAS（7×24 低功耗调度中心）+ 阿里云 DashScope API（Qwen3-14B），搭建纯云端推理的私人 AI 助手；收录 **17 个典型踩坑案例、完整解决方案与最佳实践**，便于检索与复用到同类部署（NAS / ARM64 / 纯云端 API）。
->
-> **运行状态说明**：文中「**当时 / 文档记录期末（约 2026-02-11）**」在用的模型与工具配置，指实战收尾阶段的**最终选型**；后因 Token 成本，**OpenClaw 实例已暂停运行**（详见 [安全加固与项目复盘](./7.2.7_OpenClaw_Security_and_Retrospective.md) 中的时间线与功能总览 ⏸️）。操作步骤仍可按需复现，请勿将「当前使用」理解为作者至今仍在 7×24 在线服务。
+**OpenClaw** 是 2026 年前后社区讨论度很高的开源 AI 助手方案之一——它不只是一个聊天机器人框架，而是一个完整的 **AI Agent 操作系统**：支持飞书 / Web 多渠道接入，内置工具调用（function calling）、技能系统（Skills）、记忆管理、多 Agent 协作，还能接入任意 OpenAI 兼容的大模型。
 
----
+本仓库是一份**从零到可用的完整实战文档**：用一台绿联 DH4300+ NAS（7×24 低功耗调度中心）+ 阿里云 DashScope API（Qwen3-14B），搭建纯云端推理的私人 AI 助手；收录 **17 个典型踩坑案例、完整解决方案与最佳实践**，便于检索与复用到同类部署（NAS / ARM64 / 纯云端 API）。
+
+**运行状态说明**：文中「**当时 / 文档记录期末（约 2026-02-11）**」在用的模型与工具配置，指实战收尾阶段的**最终选型**；后因 Token 成本，**OpenClaw 实例已暂停运行**（详见 [安全加固与项目复盘](./7.2.7_OpenClaw_Security_and_Retrospective.md) 中的时间线与功能总览 ⏸️）。操作步骤仍可按需复现，请勿将「当前使用」理解为作者至今仍在 7×24 在线服务。
 
 
-# 2. 仓库结构
+# 1. 仓库结构
 
 
 ```
@@ -38,7 +35,7 @@
 ---
 
 
-# 3. 项目亮点
+# 2. 项目亮点
 
 
 - **NAS + 云端 API 架构**：绿联 NAS DH4300+（7×24 低功耗调度中心 + 5.4T 持久存储）+ 阿里云 DashScope Qwen3-14B API，轻量高效
@@ -54,7 +51,7 @@
 ---
 
 
-# 4. 系统架构
+# 3. 系统架构
 
 
 ```mermaid
@@ -96,7 +93,7 @@ sequenceDiagram
 ---
 
 
-# 5. 自定义 Skill（已全部清理）
+# 4. 自定义 Skill（已全部清理）
 
 
 > **2026-02-11**：所有自定义 Skill 和工具已清理。原因：精简系统提示词、聚焦核心能力。原有 5 个自定义 Skill（system_info / weather / nas_search / personal_info / bilibili_summary）及其 Function Calling 工具已移除，后续根据需要重新开发。
@@ -106,7 +103,7 @@ sequenceDiagram
 ---
 
 
-# 6. 快速查找
+# 5. 快速查找
 
 
 - **遇到问题？** → [踩坑记录与实践](./7.2.2_OpenClaw_Pitfalls_and_Practices.md#踩坑记录17-个案例)（17 则 + 最佳实践表）
@@ -117,7 +114,7 @@ sequenceDiagram
 ---
 
 
-# 7. 文档导航
+# 6. 文档导航
 
 
 | 序号 | 文档 | 内容概述 |
@@ -133,7 +130,7 @@ sequenceDiagram
 ---
 
 
-# 8. 快速开始
+# 7. 快速开始
 
 
 ```bash
@@ -154,7 +151,7 @@ openclaw agent --agent main --message "你好"
 ---
 
 
-# 9. 硬件清单与性能实测
+# 8. 硬件清单与性能实测
 
 
 | 设备 | 角色 | 规格 | 说明 |
@@ -162,11 +159,11 @@ openclaw agent --agent main --message "你好"
 | 绿联 DH4300+ NAS | **OpenClaw 调度中心 + 持久存储** | RK3588C / 8GB / 3.6T+1.8T 双卷 | Debian 12，7×24 运行，Docker 容器运行 Gateway + 飞书 + 存储一体 |
 | ~~RTX 3060 工作站~~ | ~~LLM 推理节点~~ | ~~i5-13490F / 32GB / RTX 3060 12GB~~ | 历史：曾用 vLLM 运行 Qwen3-8B-AWQ，后改为纯云端 API，不再作为推理节点 |
 
-## 9.1. 为什么选 NAS 作为主机？
+## 8.1. 为什么选 NAS 作为主机？
 
 之前使用 Surface Pro 5 作为 OpenClaw Gateway 调度中心，但 2 核 4 线程的 i5-7300U 在启动多个服务时负载极高，触发 watchdog 反复重启，系统极不稳定。**绿联 DH4300+ 就是绿联旗下的 NAS 机型**（RK3588C 8 核 + 8GB 内存），本就是为 7×24 运行设计的存储设备，搭载完整 Debian 12，磁盘 I/O 极强，非常适合兼任 OpenClaw 的常驻调度中心。
 
-## 9.2. NAS 存储路径
+## 8.2. NAS 存储路径
 
 NAS 双卷存储，OpenClaw Docker 容器通过只读挂载访问：
 
@@ -203,7 +200,7 @@ NAS 双卷存储，OpenClaw Docker 容器通过只读挂载访问：
 ---
 
 
-# 10. 深入阅读（独立文档）
+# 9. 深入阅读（独立文档）
 
 
 以下内容已从 README **拆出**，避免单页过长；与下表 **不重复**，请按需打开。
@@ -228,7 +225,7 @@ NAS 双卷存储，OpenClaw Docker 容器通过只读挂载访问：
 ---
 
 
-# 11. 参考链接
+# 10. 参考链接
 
 
 - [OpenClaw 官方仓库](https://github.com/openclaw/openclaw)

@@ -7,6 +7,7 @@
   去掉文首「上一节/下一节」类导航 Markdown 表（如 5.2 顶部）
 - 大节：<h1 align="center">标题</h1> → 按出现顺序 # 1. 标题、# 2. …
 - 小节：每个大节下的 ##（非 ###）→ ## N.1.、N.2. …（去掉旧 ## 上的数字前缀）
+- **第七章**（`07_项目总结/7.1_CineMaker`、`7.2_OpenClaw-Deployment-Issues`）：先将首行「# 1. 篇名」改为篇名 div 并重编大节号；删文首「返回项目总览 | …」式导航句；围栏外 `# N.` 顺序重编号。
 
 代码围栏内不修改。规范见 .cursor/rules/doc-heading-numbering.mdc
 """
@@ -44,6 +45,129 @@ CANONICAL_DIV = (
     '<div style="text-align: center; font-size: 2rem; font-weight: 700; '
     'margin-bottom: 0.5rem;"><strong>{title}</strong></div>'
 )
+
+FIRST_MAJOR_H1 = re.compile(r"^# 1\.\s+(.+)$")
+
+
+def is_chapter7_project_doc(path: Path) -> bool:
+    """第七章项目镜像（CineMaker / OpenClaw）：需篇名 div + 顺序大节编号。"""
+    try:
+        rel = path.relative_to(DOCS)
+    except ValueError:
+        return False
+    if len(rel.parts) < 3:
+        return False
+    return (
+        rel.parts[0] == "07_项目总结"
+        and rel.parts[1] in ("7.1_CineMaker", "7.2_OpenClaw-Deployment-Issues")
+        and path.suffix.lower() == ".md"
+    )
+
+
+def _skip_html_comments_and_blanks(lines: list[str], start: int) -> int:
+    i = start
+    while i < len(lines):
+        s = lines[i].strip()
+        if s == "":
+            i += 1
+            continue
+        if s.startswith("<!--"):
+            while i < len(lines) and "-->" not in lines[i]:
+                i += 1
+            i += 1
+            continue
+        break
+    while i < len(lines) and lines[i].strip() == "":
+        i += 1
+    return i
+
+
+def _ch7_unwrap_preamble_until_major(tail: list[str]) -> tuple[list[str], int]:
+    """从 tail[0] 起消费文首 blockquote / --- / 空行，直到首个「# N.」大节；返回 (插入段, 余下起始下标)。"""
+    j = 0
+    while j < len(tail) and tail[j].strip() == "":
+        j += 1
+    out: list[str] = []
+    while j < len(tail):
+        raw = tail[j].rstrip("\n\r")
+        if raw.strip() == "":
+            out.append(tail[j])
+            j += 1
+            continue
+        if raw.startswith("# ") and re.match(r"^# \d+\.\s", raw):
+            break
+        if raw.startswith(">") or raw.startswith(" >"):
+            inner = raw.lstrip()
+            if inner.startswith(">"):
+                inner = inner[1:].lstrip()
+            if "返回" in inner and "项目总览" in inner and "|" in inner:
+                j += 1
+                continue
+            out.append(inner + "\n")
+            j += 1
+            continue
+        if raw.strip() == "---":
+            j += 1
+            continue
+        out.append(tail[j])
+        j += 1
+    while j < len(tail) and tail[j].strip() == "":
+        j += 1
+    return out, j
+
+
+def chapter7_preprocess(text: str) -> str:
+    """
+    镜像自上游的第七章文档：首行「# 1. 篇名」改为规范篇名 div；文首 blockquote 改为正文段；
+    去掉「返回项目总览 | …」式导航句；围栏外所有「# N.」按出现顺序重编为 1..K（不误伤代码块内 #）。
+    """
+    lines = text.splitlines(keepends=True)
+    pos = _skip_html_comments_and_blanks(lines, 0)
+    if pos >= len(lines):
+        return text
+
+    head = lines[pos].rstrip("\n\r")
+    if TITLE_DIV.match(head) or TITLE_P.match(head):
+        k = pos + 1
+        while k < len(lines) and lines[k].strip() == "":
+            k += 1
+        prefix = lines[:k]
+        tail = lines[k:]
+    else:
+        m = FIRST_MAJOR_H1.match(head)
+        if not m:
+            return renumber_h1_sequential_outside_fences(text)
+        title = m.group(1).strip()
+        div_line = CANONICAL_DIV.format(title=title) + "\n"
+        prefix = lines[:pos] + [div_line, "\n"]
+        tail = lines[pos + 1 :]
+
+    preamble, j = _ch7_unwrap_preamble_until_major(tail)
+    merged = prefix + preamble + tail[j:]
+    return renumber_h1_sequential_outside_fences("".join(merged))
+
+
+def renumber_h1_sequential_outside_fences(text: str) -> str:
+    lines = text.splitlines(keepends=True)
+    in_fence = False
+    n = 0
+    out: list[str] = []
+    for line in lines:
+        st = line.rstrip("\n\r")
+        if st.lstrip().startswith("```"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if in_fence:
+            out.append(line)
+            continue
+        m = re.match(r"^# \d+(\.\s+.*)$", st)
+        if m:
+            n += 1
+            out.append(f"# {n}{m.group(1)}\n")
+            continue
+        out.append(line)
+    return "".join(out)
 
 
 def normalize_title_line(lines: list[str]) -> list[str]:
@@ -206,7 +330,9 @@ def finalize(lines: list[str]) -> str:
     return text
 
 
-def transform(_path: Path, text: str) -> str:
+def transform(path: Path, text: str) -> str:
+    if is_chapter7_project_doc(path):
+        text = chapter7_preprocess(text)
     lines = text.splitlines(keepends=True)
     lines = normalize_title_line(lines)
     lines = strip_after_title(lines)
