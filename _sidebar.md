@@ -2,65 +2,52 @@
 
 ---
 
-* **🤖 模型训练与微调**
-  * [大模型微调实战（LoRA/QLoRA）](docs/01_模型训练与微调/大模型微调实战指南.md)
-  * [常用微调架构总结](docs/01_模型训练与微调/常用微调模型架构总结.md)
-  * [分布式训练框架综述](docs/01_模型训练与微调/分布式训练框架综述.md)
+* **一、基础层**
+  * [1.1 大模型基础与架构](docs/01_基础层/1.1_大模型基础与架构.md)
+  * [1.2 数据处理与预训练](docs/01_基础层/1.2_数据处理与预训练.md)
 
 ---
 
-* **🚀 模型部署与推理**
-  * [vLLM 使用指南](docs/02_模型部署与推理/vLLM使用指南.md)
-  * [国产GPU适配vLLM](docs/02_模型部署与推理/国产GPU适配vLLM完整指南.md)
-  * [8卡A100部署实战](docs/02_模型部署与推理/云端大模型8卡A100部署实战.md)
-  * [LLM压缩与量化工具](docs/02_模型部署与推理/LLM压缩工具介绍.md)
-  * [PaddleOCR文档解析](docs/02_模型部署与推理/PaddleOCR与LLM文档解析工具.md)
-  * [高通端侧推理框架](docs/02_模型部署与推理/高通端侧推理框架解析.md)
+* **二、训练与微调**
+  * [2.1 SFT 监督微调](docs/02_训练与微调/2.1_SFT监督微调.md)
+  * [2.2 LoRA / QLoRA 高效微调](docs/02_训练与微调/2.2_LoRA_QLoRA高效微调.md)
+  * [2.3 RLHF / DPO 对齐训练](docs/02_训练与微调/2.3_RLHF_DPO对齐训练.md)
+  * [2.4 分布式训练](docs/02_训练与微调/2.4_分布式训练.md)
 
 ---
 
-* **🔍 RAG 检索增强生成**
-  * [RAG流程与面试整理](docs/03_RAG检索增强生成/RAG流程与面试问题整理.md)
-  * [RAG问答系统设计](docs/03_RAG检索增强生成/RAG问答系统设计与实现.md)
-  * [QA数据集生成工具](docs/03_RAG检索增强生成/问答数据集生成工具.md)
-  * [Milvus向量数据库](docs/06_工程化与服务部署/Milvus使用指南大纲.md)
-  * [LangChain实践指南](docs/06_工程化与服务部署/LangChain实践大纲.md)
+* **三、部署与推理**
+  * [3.1 vLLM 推理部署](docs/03_部署与推理/3.1_vLLM推理部署.md)
+  * [3.2 INT4/INT8 量化](docs/03_部署与推理/3.2_INT量化.md)
+  * [3.3 端侧部署（TVM / ONNX / MNN）](docs/03_部署与推理/3.3_端侧部署.md)
 
 ---
 
-* **🤖 Agent 智能体开发**
-  * [MCP技术介绍与实践](docs/04_Agent智能体开发/MCP技术介绍与实践.md)
-  * [Dify平台技术实践](docs/04_Agent智能体开发/Dify平台技术实践.md)
-  * [Agent技能体系说明](docs/04_Agent智能体开发/Agent技能体系技术说明.md)
-  * [垂直场景Agent实践](docs/04_Agent智能体开发/垂直场景Agent实践记录.md)
-  * [车端大模型Agent](docs/04_Agent智能体开发/车端大模型Agent应用技术路线.md)
-  * [AppAgent Android自动化](docs/06_工程化与服务部署/AppAgent实践大纲.md)
+* **四、RAG 与知识库**
+  * [4.1 RAG 检索增强生成](docs/04_RAG与知识库/4.1_RAG检索增强生成.md)
+  * [4.2 Milvus 向量数据库](docs/04_RAG与知识库/4.2_Milvus向量数据库.md)
+  * [4.3 LangChain 应用开发](docs/04_RAG与知识库/4.3_LangChain应用开发.md)
 
 ---
 
-* **📱 端侧部署**
-  * [TVM/ONNX/MNN实践](docs/05_AI编译器与底层优化/端侧推理框架实践大纲.md)
-  * [INT4/INT8量化实战](docs/05_AI编译器与底层优化/量化实战大纲.md)
+* **五、Agent 开发**
+  * [5.1 Agent 设计与工作流](docs/05_Agent开发/5.1_Agent设计与工作流.md)
+  * [5.2 MCP 协议](docs/05_Agent开发/5.2_MCP协议.md)
+  * [5.3 Dify 工作流平台](docs/05_Agent开发/5.3_Dify工作流平台.md)
+  * [5.4 AppAgent Android自动化](docs/05_Agent开发/5.4_AppAgent.md)
 
 ---
 
-* **🔧 工程化**
-  * [FastAPI服务化部署](docs/06_工程化与服务部署/FastAPI服务化大纲.md)
-  * [Docker与CI/CD](docs/06_工程化与服务部署/Docker_CICD大纲.md)
+* **六、工程化**
+  * [6.1 FastAPI 服务化](docs/06_工程化/6.1_FastAPI服务化.md)
+  * [6.2 Docker 与 CI/CD](docs/06_工程化/6.2_Docker_CICD.md)
 
 ---
 
-* **🛠️ 工具配置**
-  * [OpenClaw 部署指南](docs/04_Agent智能体开发/OpenClaw部署指南.md)
-  * [OpenClaw Nginx配置](docs/04_Agent智能体开发/OpenClaw_Nginx与WebUI配置.md)
-  * [Cursor IDE配置](docs/04_Agent智能体开发/Cursor_IDE配置指南.md)
-  * [Qwen Code配置](docs/04_Agent智能体开发/Qwen_Code配置指南.md)
-
----
-
-* **📦 项目实践**
-  * [CineMaker — 产品工作流](docs/projects/CineMaker-AI-Platform/docs/guides/1_产品工作流.md)
-  * [CineMaker — 技术架构](docs/projects/CineMaker-AI-Platform/docs/guides/2_技术架构.md)
-  * [CineMaker — 提示词指南](docs/projects/CineMaker-AI-Platform/docs/guides/3_提示词指南.md)
-  * [OpenClaw — 踩坑与实践](docs/projects/OpenClaw-Deployment-Issues/docs/2_OpenClaw_Pitfalls_and_Practices.md)
-  * [OpenClaw — 安全与复盘](docs/projects/OpenClaw-Deployment-Issues/docs/7_OpenClaw_Security_and_Retrospective.md)
+* **七、项目总结**
+  * [7.1 太初 · 行业RAG智能问答系统](docs/07_项目总结/7.1_太初RAG系统.md)
+  * [7.2 太初 · 大模型推理优化系统](docs/07_项目总结/7.2_太初推理优化.md)
+  * [7.3 展锐 · 端侧AI软件栈与车载感知](docs/07_项目总结/7.3_展锐端侧软件栈.md)
+  * [7.4 智驾大陆 · 感知模型编排优化](docs/07_项目总结/7.4_智驾大陆感知编排.md)
+  * [7.5 CineMaker · 多Agent短剧平台](docs/07_项目总结/7.5_CineMaker.md)
+  * [7.6 GateClaw · 量化交易自主Agent](docs/07_项目总结/7.6_GateClaw.md)
