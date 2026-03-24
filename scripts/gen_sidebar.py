@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SIDEBAR = ROOT / "_sidebar.md"
-SKIP_DIRS = {"scripts", ".git"}
+SKIP_DIRS = {"scripts", ".git", "github文档仓库"}
 
 
 def main() -> None:
