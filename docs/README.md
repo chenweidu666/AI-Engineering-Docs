@@ -12,6 +12,6 @@ AI工程技术笔记，按大模型完整技术栈组织，共七章。
 | 4. RAG与知识库 | RAG / Milvus / LangChain |
 | 5. Agent开发 | 工作流 / MCP / Dify / AppAgent / OpenClaw |
 | 6. 工程化 | FastAPI / Docker / CI/CD |
-| 7. 项目总结 | 太初 / 展锐 / 智驾大陆 / CineMaker / GateClaw |
+| 7. 项目总结 | CineMaker 项目手册 · OpenClaw 部署与实践（见 [本章索引](07_项目总结/README.md)） |
 
 使用左侧导航栏浏览所有文章。

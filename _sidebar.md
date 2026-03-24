@@ -46,9 +46,18 @@
 ---
 
 * **七、项目总结**
-  * [7.1 太初 · 行业RAG智能问答系统](docs/07_项目总结/7.1_太初RAG系统.md)
-  * [7.2 太初 · 大模型推理优化系统](docs/07_项目总结/7.2_太初推理优化.md)
-  * [7.3 展锐 · 端侧AI软件栈与车载感知](docs/07_项目总结/7.3_展锐端侧软件栈.md)
-  * [7.4 智驾大陆 · 感知模型编排优化](docs/07_项目总结/7.4_智驾大陆感知编排.md)
-  * [7.5 CineMaker · 多Agent短剧平台](docs/07_项目总结/7.5_CineMaker.md)
-  * [7.6 GateClaw · 量化交易自主Agent](docs/07_项目总结/7.6_GateClaw.md)
+  * [§ 本章说明与索引](docs/07_项目总结/README.md)
+  * **CineMaker 项目手册**
+    * [产品工作流](docs/07_项目总结/7.1_CineMaker/1_产品工作流.md)
+    * [技术架构](docs/07_项目总结/7.1_CineMaker/2_技术架构.md)
+    * [提示词指南](docs/07_项目总结/7.1_CineMaker/3_提示词指南.md)
+    * [火山引擎 API 申请与配置](docs/07_项目总结/7.1_CineMaker/4_火山引擎API申请指南.md)
+  * **OpenClaw 部署与实践**
+    * [README 总览](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/README.md)
+    * [1 · 部署指南](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/1_OpenClaw_Deploy_Guide.md)
+    * [2 · 踩坑与实践](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/2_OpenClaw_Pitfalls_and_Practices.md)
+    * [3 · Nginx WebUI](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/3_OpenClaw_Nginx_WebUI.md)
+    * [4 · Workspace](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/4_OpenClaw_Workspace.md)
+    * [5 · Skills](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/5_OpenClaw_Skills.md)
+    * [6 · 原生工具插件](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/6_OpenClaw_Native_Tools_Plugin.md)
+    * [7 · 安全与复盘](docs/07_项目总结/7.2_OpenClaw-Deployment-Issues/7_OpenClaw_Security_and_Retrospective.md)

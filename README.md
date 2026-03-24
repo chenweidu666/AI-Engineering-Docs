@@ -1,6 +1,6 @@
 # AI-Engineering-Docs · CW Tech Docs
 
-AI工程技术文档站，按大模型完整技术栈组织，共七章二十篇。
+AI工程技术文档站，按大模型完整技术栈组织，共七章（第七章为项目长篇文档子站）。
 
 [![GitHub Pages](https://img.shields.io/badge/在线阅读-GitHub%20Pages-0366d6?logo=github)](https://chenweidu666.github.io/AI-Engineering-Docs/)
 [![Resume](https://img.shields.io/badge/简历-Resume--Site-2563EB?logo=github)](https://chenweidu666.github.io/Resume-Site/)
@@ -19,7 +19,7 @@ AI工程技术文档站，按大模型完整技术栈组织，共七章二十篇
 | 四、RAG与知识库 | RAG / Milvus / LangChain |
 | 五、Agent开发 | 工作流 / MCP / Dify / AppAgent / OpenClaw |
 | 六、工程化 | FastAPI / Docker / CI/CD |
-| 七、项目总结 | 太初 / 展锐 / 智驾大陆 / CineMaker / GateClaw |
+| 七、项目总结 | CineMaker 手册 · OpenClaw 部署实录（[`docs/07_项目总结/`](docs/07_项目总结/README.md)） |
 
 ## 仓库结构
 
@@ -32,8 +32,7 @@ AI工程技术文档站，按大模型完整技术栈组织，共七章二十篇
 │   ├── 04_RAG与知识库/
 │   ├── 05_Agent开发/
 │   ├── 06_工程化/
-│   ├── 07_项目总结/
-│   └── projects/                 # CineMaker / OpenClaw 项目文档
+│   ├── 07_项目总结/              # CineMaker / OpenClaw 镜像文档（见 README）
 ├── index.html                    # Docsify配置
 ├── _sidebar.md                   # 侧边栏导航
 └── README.md                     # 本文件
