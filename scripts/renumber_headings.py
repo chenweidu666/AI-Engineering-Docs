@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 将 docs 下 Markdown 标题改为文档内层级编号（与文件名篇号无关）：
-  # 1. 标题
+  篇名：**1. 标题**（加粗正文，不用 ATX 一级标题）
   ## 1.1. 标题
   ### 1.1.1. 标题
   #### 1.1.1.1. 标题
 - 按标题层级（# 数量）维护计数；跳过围栏代码块。
 - 自动剥除标题上已有的「数字.」前缀或「一、」等旧编号后再套新编号。
-- 全篇仅保留**第一个** ATX H1（`# `）；其后出现的 `# ` 一律先降为 `## `，再参与编号（避免附录里出现与篇首平级的 `# 2.`）。
+- 全篇第一个 `# ` 在编号完成后改为 **加粗篇名**（全篇不出现一级 `#` 标题）。
+- 其后出现的 `# ` 一律先降为 `## `，再参与编号（避免附录里出现与篇首平级的第二个 `#`）。
 """
 from __future__ import annotations
 
@@ -43,6 +44,35 @@ def demote_extra_h1(text: str) -> str:
             else:
                 first_h1 = True
                 out.append(line)
+            continue
+        out.append(line)
+    return "".join(out)
+
+
+def first_h1_to_bold_doc_title(text: str) -> str:
+    """将全篇第一个 ATX H1（`# …`）改为加粗行 `**…**`，不作为 Markdown 一级标题。"""
+    lines = text.splitlines(keepends=True)
+    out: list[str] = []
+    in_code = False
+    replaced = False
+    for line in lines:
+        st = line.rstrip("\n\r").strip()
+        if st.startswith("```"):
+            in_code = not in_code
+            out.append(line)
+            continue
+        if in_code:
+            out.append(line)
+            continue
+        raw = line.rstrip("\n\r")
+        if (
+            not replaced
+            and raw.startswith("# ")
+            and not raw.startswith("##")
+        ):
+            inner = raw[2:].strip()
+            out.append(f"**{inner}**\n\n")
+            replaced = True
             continue
         out.append(line)
     return "".join(out)
@@ -118,7 +148,7 @@ def main() -> int:
     changed = 0
     for path in sorted(DOCS.rglob("*.md")):
         raw = path.read_text(encoding="utf-8")
-        new = process_markdown(demote_extra_h1(raw))
+        new = first_h1_to_bold_doc_title(process_markdown(demote_extra_h1(raw)))
         if new != raw:
             path.write_text(new, encoding="utf-8")
             print(f"OK {path.relative_to(DOCS)}")
