@@ -2,23 +2,16 @@
 
 本站根目录即 **`3_技术文档`**。
 
-- **拉取**：`fetch_github_docs.py` 仅同步 **CineMaker-AI-Platform**（`README` + `docs/guides`）与 **OpenClaw-Deployment-Issues**（`README` + `docs/`），写入 `docs/projects/`。
-- **侧栏**：`gen_sidebar.py` 仅将上述路径写入 `_sidebar.md`；`docs/01_`～`05_` 等不参与侧栏。
+- **侧栏**：由仓库根目录 **`_sidebar.md` 手工维护**（七章主线 + 项目总结）。`gen_sidebar.py` 已改为**不覆盖**该文件，仅提示说明；勿依赖 `regen_sidebar.sh` 生成全站侧栏。
+- **拉取上游镜像**：`fetch_github_docs.py` 同步 **CineMaker-AI-Platform** 与 **OpenClaw-Deployment-Issues** 的 Markdown 到 **`../归档/from_3_技术文档/projects/`**（不在 `docs/` 下，避免与侧栏主线混淆）。
 
 **从 GitHub 拉取镜像**（不克隆代码）：
 
 ```bash
 python3 scripts/fetch_github_docs.py
-bash scripts/regen_sidebar.sh
 ```
 
-新增或重命名 `.md` 后，刷新左侧导航：
-
-```bash
-cd /path/to/3_技术文档
-bash scripts/regen_sidebar.sh
-git add _sidebar.md && git commit -m "chore: 更新侧栏" && git push
-```
+新增或调整章节时，请**直接编辑 `_sidebar.md`** 与对应 `docs/` 下 `.md`，然后提交推送。
 
 远程仓库：`git@github.com:chenweidu666/chenwei-tech-docs.git`  
 线上阅读：<https://chenweidu666.github.io/chenwei-tech-docs/>

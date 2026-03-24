@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-从 GitHub 仅拉取 Markdown 到 docs/projects/（不克隆代码）。
+从 GitHub 仅拉取 Markdown 到归档目录 projects/（不克隆代码）。
+镜像已迁出站点 docs/，默认写入 1_陈纬简历/归档/from_3_技术文档/projects/。
 当前仅同步两个公开仓：
   - CineMaker-AI-Platform：根 README + docs/guides/
   - OpenClaw-Deployment-Issues：根 README + docs/
@@ -15,7 +16,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs" / "projects"
+# 与侧栏七章主线分离：项目镜像归档到上级「归档」目录
+OUT = ROOT.parent / "归档" / "from_3_技术文档" / "projects"
 OWNER = "chenweidu666"
 BRANCH = "main"
 UA = "chenwei-tech-docs-fetch/1.0"
