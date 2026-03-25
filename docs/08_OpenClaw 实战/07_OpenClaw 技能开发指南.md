@@ -1,6 +1,17 @@
-# OpenClaw 技能开发指南
+<div style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;"><strong>OpenClaw 技能开发指南</strong></div>
 
-> 📅 2026-03-25 | 🦞 双龙虾架构实战系列第 7 篇
+> 2026-03-25 | 🦞 双龙虾架构实战系列第 7 篇
+
+---
+
+- [技能架构](#技能架构)
+- [技能模板](#技能模板)
+- [开发流程](#开发流程)
+- [测试调试](#测试调试)
+- [发布流程](#发布流程)
+- [最佳实践](#最佳实践)
+- [案例解析](#案例解析)
+
 
 ---
 
@@ -653,3 +664,4 @@ async function listIssues(token) {
 ---
 
 *本文档由 里斯本 🦞 自动记录 | Powered by OpenClaw + Claude*
+

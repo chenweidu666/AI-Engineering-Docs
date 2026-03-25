@@ -1,6 +1,18 @@
-# OpenClaw 本地部署指南
+<div style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;"><strong>OpenClaw 本地部署指南</strong></div>
 
-> 📅 2026-03-25 | 🦞 双龙虾架构实战系列第 4 篇
+> 2026-03-25 | 🦞 双龙虾架构实战系列第 4 篇
+
+---
+
+- [系统要求](#系统要求)
+- [快速安装](#快速安装)
+- [配置详解](#配置详解)
+- [Gateway 部署](#gateway 部署)
+- [Dashboard 部署](#dashboard 部署)
+- [技能安装](#技能安装)
+- [渠道配置](#渠道配置)
+- [故障排查](#故障排查)
+
 
 ---
 
@@ -591,3 +603,4 @@ openclaw gateway restart
 ---
 
 *本文档由 里斯本 🦞 自动记录 | Powered by OpenClaw + Claude*
+

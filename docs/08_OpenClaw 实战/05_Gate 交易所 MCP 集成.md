@@ -1,6 +1,17 @@
-# Gate 交易所 MCP 集成
+<div style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;"><strong>Gate 交易所 MCP 集成</strong></div>
 
-> 📅 2026-03-25 | 🦞 双龙虾架构实战系列第 5 篇
+> 2026-03-25 | 🦞 双龙虾架构实战系列第 5 篇
+
+---
+
+- [MCP 简介](#mcp 简介)
+- [Gate MCP 架构](#gate-mcp 架构)
+- [安装部署](#安装部署)
+- [配置详解](#配置详解)
+- [工具使用](#工具使用)
+- [实战案例](#实战案例)
+- [故障排查](#故障排查)
+
 
 ---
 
@@ -564,3 +575,4 @@ mcporter call gate.cex_wallet_get_total_balance
 ---
 
 *本文档由 里斯本 🦞 自动记录 | Powered by OpenClaw + Claude*
+
